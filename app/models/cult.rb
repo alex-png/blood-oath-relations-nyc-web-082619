@@ -1,4 +1,3 @@
-require 'pry'
 class Cult 
     attr_reader :name, :location, :founding_year, :slogan
         @@all = []

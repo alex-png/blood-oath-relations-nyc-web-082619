@@ -1,4 +1,3 @@
-require "pry"
 require_relative "bloodoath"
 require_relative "follower"
 require_relative "cult"
@@ -22,4 +21,3 @@ outfit.recruit_follower(al, 1945)
 union.recruit_follower(al, 1945)
 
 
-binding.pry
