@@ -10,4 +10,10 @@ class BloodOath
     def self.all
         @@all
     end
+    def initiation_date
+        self.date.to_s
+    end
+    def self.first_oath
+        BloodOath.all.first.follower
+    end
 end

@@ -1,6 +1,6 @@
 require 'pry'
 class Cult 
-    attr_reader :name, :location, :founding_year
+    attr_reader :name, :location, :founding_year, :slogan
         @@all = []
     def initialize(name, location, founding_year, slogan)
         @name = name
@@ -34,4 +34,25 @@ class Cult
     def self.find_by_founding_year(year)
         self.all.find_all {|cult| cult.founding_year == year}
     end
+    def followers
+        bo = BloodOath.all.select { |bloodoath| bloodoath.cult.name == self.name}
+        bo.map {|bo| bo.follower}
+    end
+    def average_age
+        self.followers.reduce(0.0){ |sum, follower| sum + follower.age} / self.followers.size
+    end
+    def my_followers_motto
+        self.followers.map {|follower| follower.life_motto} 
+    end
+ 
+    def self.least_popular
+        self.all.sort_by {|obj| obj.cult_population}.first
+    end
+
+    def self.most_common_location
+        arr = self.all.map {|cult| cult.location}
+        arr.max_by { |i| arr.count(i) }
+    end
 end
+
+

@@ -14,5 +14,12 @@ mormon = Cult.new("Latter Day Saints", "Palmyra, New York", 1826, "Families are 
 jallen = Follower.new("Jallen", 26, "Fuck bitches, get money")
 mormon.recruit_follower(alex, 2019)
 mormon.recruit_follower(jallen, 1993)
+al = Follower.new("Al Capone", 35, "I don't know no Italians")
+manson_fam.recruit_follower(al, 1945)
+outfit = Cult.new("The Outfit", "Chicago", 1920, "Omerta")
+union = Cult.new("The Workers Union", "Chicago", 1940, "Workers Revolt!")
+outfit.recruit_follower(al, 1945)
+union.recruit_follower(al, 1945)
+
 
 binding.pry

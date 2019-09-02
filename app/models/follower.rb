@@ -13,12 +13,8 @@ class Follower
         @@all
     end
 
-    def followers(cult)
-        cult << self
-    end
-
     def cults
-        BloodOath.all.select { |bloodoath| bloodoath.follower.name == self.name}
+        bo = BloodOath.all.select { |bloodoath| bloodoath.follower.name == self.name}
     end
 
     def join_cult(cult, date)
@@ -28,6 +24,19 @@ class Follower
     def self.of_a_certain_age(age)
         self.all.select{|followers| followers.age >= age}
     end 
+    def my_cults_slogan
+        self.cults.map {|bo| bo.cult.slogan} 
+    end
+    def self.most_active 
+        self.all.sort_by {|follower| follower.cults.count}.last
+
+    end
+
+    def self.top_ten
+        arr = self.all.sort_by {|follower| follower.cults.count}
+        arr = arr.reverse
+        arr[0..9]
+    end
 
 
 end
